@@ -1,0 +1,102 @@
+$font-stack: 'Nunito', sans-serif;
+//Colors
+$white: #fff;
+$black: #222741;
+$gray-text: #787878;
+$gray: #D3D3D3;
+$blue: #827191;
+$hover-color: #896978;
+$focus-color: #92BFB1;
+$event-color: #9BF3F0;
+$main-background-color: #F8FAFA;
+
+@mixin e($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+body {
+  background: #fcfcfc;
+}
+
+.main-container-wrapper {
+  background-color: $main-background-color;
+  min-width: 320px;
+  max-width: 400px;
+  overflow-y: auto;
+  font-family: $font-stack;
+  border-radius: 10%;
+  box-shadow: 0px 32px 47px rgba(32, 23, 23, 0.09);
+}
+
+.calendar-container {
+  background: $blue;
+
+  @include e(head) {
+    display: flex;
+    color: $white;
+    justify-content: center;
+    width: 100%;
+  }
+  @include e(items) {
+    display: flex;
+    justify-content: center;
+  }
+  @include e(day) {
+    display: inline-block;
+    color: $white;
+    padding: 3px 15px;
+  }
+}
+
+.calendar-table {
+  color: $black;
+
+  @include e(body){
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  @include e(item) {
+    display: inline-block;
+    text-align: center;
+    width: 60px;
+    &:hover {
+      background: $hover-color;
+      color: $white;
+    }
+  }
+  @include e(radio) {
+    display: none;
+    &:checked + .calendar-table__date {
+      background-color: #7DAA92;
+      color: #fff;
+    }
+    &:hover {
+      background: #EEC643;
+      color: $white;
+    }
+  }
+  @include e(date) {
+    cursor: pointer;
+    line-height: 34px;
+  }
+  @include e(event) {
+    color: white;
+    background-color: $event-color;
+  }
+  @include e(inactive) {
+    color: $gray-text;
+    background-color: $gray;
+    pointer-events: none;
+  }
+  @include e(weekend){
+    &:hover {
+      background: #EEC643;
+      color: $white;
+    }
+  }
+}
