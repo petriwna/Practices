@@ -1,12 +1,13 @@
-const bind = require('../src/task5');
+const {bind} = require('../src/task5');
 
-const alex = { userName: "Alex" };
-
-function greeting(greeting, punctuation) {
-    return `${greeting} ${this.userName}${punctuation}`;
-}
 describe('bind', () => {
     test('create bind method', () => {
-        expect(bind(greeting, alex)).toBe()
-    })
+        let obj = {
+            a: 100,
+            b: 200
+        };
+        let func = function( c ) { return this.a + this.b + c };
+        let newObject = func.bind(obj, 300)
+        expect(newObject()).toEqual(600)
+    });
 })
