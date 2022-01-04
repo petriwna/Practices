@@ -4,7 +4,6 @@ const obj = {a: undefined};
 const obj1 = {};
 const obj2 = {a: 1};
 const obj3 = {a: null};
-const obj4 = {a: 0};
 
 describe('isEmpty', () => {
     test('is object empty', () => {
@@ -15,5 +14,8 @@ describe('isEmpty', () => {
     });
     test('is object empty', () => {
         expect(isEmpty(obj2)).toBe(false);
+    });
+    test('is object empty', () => {
+        expect(isEmpty(obj3)).toBe(true);
     });
 });
